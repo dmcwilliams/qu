@@ -27,6 +27,14 @@ module Qu
       def length(queue = 'default')
         redis.llen("queue:#{queue}")
       end
+      
+      def jobs(queue = 'default')
+        redis.lrange("queue:#{queue}",0,-1)
+      end
+      
+      def job(payload)
+        redis.get("job:#{payload}")
+      end
 
       def clear(queue = nil)
         queue ||= queues + ['failed']

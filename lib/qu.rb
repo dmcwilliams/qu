@@ -15,7 +15,7 @@ module Qu
 
   attr_accessor :backend, :failure, :logger
 
-  def_delegators :backend, :length, :queues, :reserve, :clear, :connection=
+  def_delegators :backend, :length, :queues, :workers, :worker, :jobs, :job, :reserve, :clear, :connection=
 
   def backend
     @backend || raise("Qu backend not configured. Install one of the backend gems like qu-redis.")
